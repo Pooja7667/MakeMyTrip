@@ -61,40 +61,46 @@ const Pagination = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-4">Hotel Listings</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center md:text-left">
+        Hotel Listings
+      </h2>
 
       {/* Loading state */}
       {loading ? (
-        <p className="text-center">Loading...</p>
+        <p className="text-center text-lg md:text-xl font-semibold">
+          Loading...
+        </p>
       ) : (
         <>
           {/* Display filtered and paginated data */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {currentData.length > 0 ? (
               currentData.map((item) => <PageCard key={item.id} item={item} />)
             ) : (
-              <p className="text-center col-span-2">No results found.</p>
+              <p className="text-center col-span-full text-lg font-semibold">
+                No results found.
+              </p>
             )}
           </div>
 
           {/* Pagination controls */}
-          <div className="flex justify-between items-center mt-8">
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center mt-8 space-y-4 md:space-y-0">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:bg-gray-300"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:bg-gray-300 w-full md:w-auto"
             >
               Previous
             </button>
 
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-lg font-medium">
               Page {currentPage} of {totalPages}
             </p>
 
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:bg-gray-300"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:bg-gray-300 w-full md:w-auto"
             >
               Next
             </button>

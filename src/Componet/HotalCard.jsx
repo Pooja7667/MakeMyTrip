@@ -21,18 +21,18 @@ const HotalCard = ({ item }) => {
   }, [hotelAPI]);
 
   return (
-    <div className="flex bg-white rounded-lg shadow-lg border my-4 p-4">
+    <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg border my-4 p-4 space-y-4 md:space-y-0 md:space-x-4">
       {/* Image Section */}
-      <div className="w-1/3">
+      <div className="w-full md:w-1/3">
         <img
           src={
             hotelData?.guid?.rendered ||
             "http://api.elixirtrips.com/wp-content/uploads/2024/03/Lapita-Dubai-Parks-and-Resorts-Autograph-Collection-44.webp"
           }
           alt="Hotel Image"
-          className="w-full h-48 object-cover rounded-lg"
+          className="w-full h-48 md:h-40 lg:h-48 object-cover rounded-lg"
         />
-        <div className="flex space-x-2 mt-2">
+        <div className="flex flex-wrap justify-start space-x-2 mt-2">
           {/* Gallery Thumbnails */}
           {Array(3)
             .fill("")
@@ -44,23 +44,23 @@ const HotalCard = ({ item }) => {
                 className="w-10 h-10 object-cover rounded-lg"
               />
             ))}
-          <button className="text-blue-600 underline text-sm">View All</button>
+         
         </div>
       </div>
 
       {/* Hotel Details Section */}
-      <div className="w-2/3 pl-4 flex flex-col justify-between">
+      <div className="w-full md:w-2/3 pl-0 md:pl-4 flex flex-col justify-between">
         {/* Hotel Title and Ratings */}
-        <div className="flex justify-between items-start">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
-            <h3 className="text-xl font-bold text-gray-800">
+            <h3 className="text-lg md:text-xl font-bold text-gray-800">
               {item.title.rendered}
             </h3>
             <p className="text-blue-600 underline text-sm">
               {item.acf?.hotel_name || "Near City Center"}
             </p>
           </div>
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 mt-2 md:mt-0">
             <span className="bg-blue-500 text-white px-2 py-1 rounded-lg text-sm">
               4.0
             </span>
@@ -69,7 +69,7 @@ const HotalCard = ({ item }) => {
         </div>
 
         {/* Features Badges */}
-        <div className="flex flex-wrap space-x-2 text-gray-600 mt-2">
+        <div className="flex flex-wrap gap-2 text-gray-600 mt-2">
           <span className="bg-gray-200 rounded-full px-3 py-1 text-xs">
             Couple Friendly
           </span>
@@ -82,18 +82,20 @@ const HotalCard = ({ item }) => {
         </div>
 
         {/* Description */}
-        <p className="text-gray-700 mt-2 text-sm">
+        <p className="text-gray-700 mt-2 text-sm md:text-base">
           {item.acf?.description ||
             "Convenient airport proximity, courteous staff, clean and cozy rooms"}
         </p>
 
         {/* Pricing and Booking Section */}
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 space-y-4 md:space-y-0">
           <div>
-            <p className="text-2xl font-bold text-gray-800">₹9,323</p>
+            <p className="text-lg md:text-2xl font-bold text-gray-800">
+              ₹9,323
+            </p>
             <p className="text-gray-600 text-sm">+ ₹1,656 taxes & fees</p>
           </div>
-          <button className="bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700">
+          <button className="bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 w-full md:w-auto">
             Login to Book Now & Pay Later!
           </button>
         </div>
